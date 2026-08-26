@@ -36,8 +36,8 @@ public class ListaDoble<T> {
             primero = nuevo;
             ultimo = nuevo;
         }else{
-            nuevo.setSig(primero);
-            primero.setAnt(nuevo);
+            nuevo.setSiguiente(primero);
+            primero.setAnterior(nuevo);
             primero = nuevo;
         }
         tamanio ++;
@@ -50,8 +50,8 @@ public class ListaDoble<T> {
             primero = nuevo;
             ultimo = nuevo;
         } else {
-            nuevo.setAnt(ultimo);
-            ultimo.setSig(nuevo);
+            nuevo.setAnterior(ultimo);
+            ultimo.setSiguiente(nuevo);
             ultimo = nuevo;
         }
         tamanio++;
@@ -61,7 +61,26 @@ public class ListaDoble<T> {
         if(pos<0 || pos >=tamanio){
             return false;
         }
-
+        if (tamanio == 1) {
+            primero = null;
+            ultimo = null;
+        }
+        if (pos == 0) {
+            primero = primero.getSiguiente();
+            primero.setAnterior(null);
+        }
+        else {
+            Nodo<T> temp = getPosicion(pos);
+            Nodo<T> anterior = temp.getAnterior();
+            Nodo<T> siguiente = temp.getSiguiente();
+            //puenteo
+            anterior.setSiguiente(siguiente);
+            siguiente.setAnterior(anterior);
+            temp.setSiguiente(null);
+            temp.setAnterior(null);
+        }
+        tamanio--;
+        return true;
     }
 
     public void eliminarElemento(T e){

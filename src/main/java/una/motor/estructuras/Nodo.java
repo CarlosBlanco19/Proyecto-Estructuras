@@ -29,11 +29,11 @@ public class Nodo<T> {
         this.dato = dato;
     }
 
-    public void setSig(Nodo<T> sig){
+    public void setSiguiente(Nodo<T> sig){
         this.siguiente = sig;
     }
 
-    public void setAnt(Nodo<T> ant){
+    public void setAnterior(Nodo<T> ant){
         this.anterior = ant;
     }
 
