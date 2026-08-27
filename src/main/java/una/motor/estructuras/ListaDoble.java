@@ -83,13 +83,24 @@ public class ListaDoble<T> {
         return true;
     }
 
-    public void eliminarElemento(T e){
+    public boolean eliminarElemento(T e){
+        if(primero==null){
+            return false;
+        }
+        Nodo<T> temp= primero;
+        int pos = 0; // para reutilizar metodo
+        while (temp != null) {
 
+            if (temp.getDato() != null && temp.getDato().equals(e)) {// compara lo que esta
+                return eliminarPosicion(pos);
+            }
+            temp = temp.getSiguiente();
+            pos++;
+        }
+        return false;
     }
 
     public int getTamanio(){
         return tamanio;
     }
-
-
 }
