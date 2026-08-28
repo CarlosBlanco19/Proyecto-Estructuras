@@ -1,5 +1,5 @@
 package una.motor.estructuras;
-import una.motor.estructuras.Iterador;
+import una.motor.estructuras.IteradorLista;
 import una.motor.estructuras.Nodo;
 
 public class ListaDoble<T> {
@@ -14,6 +14,17 @@ public class ListaDoble<T> {
         tamanio = 0;
     }
 
+
+    public Iterador<T> getIterador(){
+        return new IteradorLista<>(primero);
+    }
+
+    public boolean isEmpty(){
+        return primero ==null;
+    }
+
+
+
     private Nodo<T> getPosicion(int pos){
         Nodo<T> temp = primero;
         int i = 0;
@@ -23,13 +34,11 @@ public class ListaDoble<T> {
         }
         return temp;
     }
-    public boolean isEmpty(){
-        return primero ==null;
-    }
 
 
 
-    public void insertarIncio(T e){
+
+    public void insertarInicio(T e){
         Nodo<T> nuevo = new Nodo<T>(e);
 
         if(isEmpty()){
@@ -83,19 +92,16 @@ public class ListaDoble<T> {
         return true;
     }
 
+    //metodo con iterador
     public boolean eliminarElemento(T e){
-        if(primero==null){
-            return false;
-        }
-        Nodo<T> temp= primero;
-        int pos = 0; // para reutilizar metodo
-        while (temp != null) {
-
-            if (temp.getDato() != null && temp.getDato().equals(e)) {// compara lo que esta
-                return eliminarPosicion(pos);
+        Iterador<T> ite= getIterador();
+        int i = 0;
+        while (ite.hasNext()){
+            T dato = ite.siguiente();
+            if(dato.equals(e)) {
+                return eliminarPosicion(i);
             }
-            temp = temp.getSiguiente();
-            pos++;
+            i++;
         }
         return false;
     }
