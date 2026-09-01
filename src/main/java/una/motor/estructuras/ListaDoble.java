@@ -2,8 +2,11 @@ package una.motor.estructuras;
 import una.motor.estructuras.IteradorLista;
 import una.motor.estructuras.Nodo;
 
-public class ListaDoble<T> {
+import java.io.Serializable;
 
+public class ListaDoble<T> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private Nodo<T> primero;
     private Nodo<T> ultimo;
     private int tamanio;
@@ -73,6 +76,8 @@ public class ListaDoble<T> {
         if (tamanio == 1) {
             primero = null;
             ultimo = null;
+            tamanio--;
+            return true;
         }
         if (pos == 0) {
             primero = primero.getSiguiente();

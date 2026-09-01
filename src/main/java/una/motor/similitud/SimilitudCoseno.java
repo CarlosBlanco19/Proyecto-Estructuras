@@ -16,11 +16,12 @@ public class SimilitudCoseno implements IFuncionSimilitud {
         double sumatoriaA=0.0;
         double sumatoriaB=0.0;
         for (int i = 0; i < a.getTamanio(); i++) {
+
             double valA=a.getPosicion(i);
-            double valB=a.getPosicion(i);
+            double valB= b.getPosicion(i);
             productoNum += valA*valB;
-            sumatoriaA=valA*valA;
-            sumatoriaB=valB*valB;
+            sumatoriaA +=valA*valA;
+            sumatoriaB +=valB*valB;
         }
         double denominador= Math.sqrt(sumatoriaA)*Math.sqrt(sumatoriaB);
         return (denominador==0.0) ? 0.0: (productoNum/denominador); //ternario :)

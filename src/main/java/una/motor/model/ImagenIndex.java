@@ -1,7 +1,7 @@
 package una.motor.model;
 import java.io.Serializable;
 
-public class ImagenIndex {
+public class ImagenIndex implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String ruta;
